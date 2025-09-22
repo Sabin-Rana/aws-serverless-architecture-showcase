@@ -9,250 +9,296 @@ The README includes **detailed step-by-step deployment instructions, architectur
 
 ## Architecture Diagram
 
-The following architecture diagram illustrates the key components and interactions in this serverless application:
+The architecture diagram illustrates the key components and interactions:
 
 ![Serverless Web App Architecture](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Architecture_Diagram/SERVERLESS%20_WEB-App-Architecture.png)
 
 ---
 
 ## Data Flow Overview
-The application implements the following **data flow and operational logic**:
-
-1. **Client Request:** End-user interacts with the application through the web interface.  
-2. **CDN Distribution:** CloudFront serves cached static content or retrieves it from S3.  
+1. **Client Request:** End-user interacts with the web interface.  
+2. **CDN Distribution:** CloudFront serves cached static content or retrieves from S3.  
 3. **Static Content Hosting:** S3 hosts the frontend React application.  
 4. **API Calls:** Frontend requests are routed through API Gateway to Lambda functions.  
-5. **Business Logic Execution:** Lambda functions handle Create and Read operations on student data.  
-6. **Data Storage:** DynamoDB stores and retrieves student records efficiently.  
-7. **Response:** Data flows back to the client securely through API Gateway and CloudFront.
+5. **Business Logic Execution:** Lambda functions handle Create and Read operations.  
+6. **Data Storage:** DynamoDB stores student records.  
+7. **Response:** Data flows back to the client securely.
 
 ---
 
 ## Features
-- **Fully Serverless Architecture:** Zero server management and automatic scaling.  
-- **CRUD Operations:** Supports creation and retrieval of student records; easily extensible to full CRUD.  
-- **Global Distribution:** CloudFront ensures low latency and reliable global delivery.  
-- **Secure Access:** HTTPS enforced, IAM-based permissions, and CORS for secure cross-origin calls.  
-- **Cost-Efficient:** Pay-per-request model; no idle compute costs.  
-- **Comprehensive Documentation:** 61 step-by-step screenshots and professional README for learning and reproducibility.
+- Fully serverless, zero server management.  
+- CRUD operations for student data (extendable).  
+- Global distribution with CloudFront.  
+- Secure HTTPS access and IAM-based permissions.  
+- Cost-efficient pay-per-request model.  
+- Complete 61-step professional documentation with screenshots.
 
 ---
 
 ## Prerequisites
-- Active AWS account with required service permissions.  
-- Familiarity with serverless architecture concepts.  
-- Knowledge of **Python**, **JavaScript**, **REST APIs**, and basic web development.  
-- Basic understanding of **AWS Lambda, API Gateway, DynamoDB, S3, and CloudFront**.
+- Active AWS account.  
+- Familiarity with serverless architecture.  
+- Knowledge of Python, JavaScript, REST APIs, and basic web development.  
+- Understanding of AWS Lambda, API Gateway, DynamoDB, S3, and CloudFront.
 
 ---
 
 ## Implementation Steps
 
 ### Phase 1: DynamoDB – Database Foundation
+
 **Step 1: DynamoDB Console Access**  
-Access AWS DynamoDB service dashboard and select **Create Table** for new table provisioning.  
-![Step 1](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_1.png)  
+Access AWS DynamoDB service dashboard and create a new table.  
+![Step 1](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_1.png)  
 
 **Step 2: Table Configuration**  
 - Table Name: `StudentData`  
 - Partition Key: `StudentID` (String)  
-- On-demand billing and default settings applied.  
-![Step 2](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_2.png)  
+- Billing: On-demand  
+![Step 2](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_2.png)  
 
 **Step 3: Table Creation Success**  
-DynamoDB table is successfully provisioned and ready for serverless integration.  
-![Step 3](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_3.png)  
+![Step 3](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_3.png)  
 
 ---
 
-### Phase 2: Lambda – Serverless Compute (GET Function)
+### Phase 2: Lambda – GET Function
+
 **Step 4: Lambda Console Access**  
-Open AWS Lambda service console and initiate **Create Function** for serverless compute layer.  
-![Step 4](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_4.png)  
+![Step 4](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_4.png)  
 
 **Step 5: GET Function Configuration**  
-- Creation Method: Author from scratch  
 - Function Name: `getStudent`  
 - Runtime: Python 3.13  
-- Execution Role: Create new role with basic Lambda permissions  
-![Step 5](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_5.png)  
+- Role: New role with Lambda basic permissions  
+![Step 5](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_5.png)  
 
 **Step 6: Lambda Function Creation Success**  
-The GET function is provisioned successfully and ready for code deployment.  
-![Step 6](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_6.png)  
+![Step 6](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_6.png)  
 
 **Step 7: GET Function Implementation**  
-Code is implemented in `getStudent.py` to fetch student records from DynamoDB.  
-![Step 7](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_7.png)  
+Code `getStudent.py` fetches student records from DynamoDB.  
+![Step 7](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_7.png)  
 
 **Step 8: Function Deployment Success**  
-Function deployed and versioned; ready for testing.  
-![Step 8](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_8.png)  
+![Step 8](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_8.png)  
 
 ---
 
 ### Phase 3: Initial Testing & IAM Configuration
+
 **Step 9: Database State Verification**  
-Verify that `StudentData` table is empty and schema is correct.  
-![Step 9](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_9.png)  
+![Step 9](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_9.png)  
 
 **Step 10: Lambda Test Event Creation**  
-Create a test event named `mytest` to validate Lambda execution.  
-![Step 10](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_10.png)  
+![Step 10](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_10.png)  
 
 **Step 11: Permission Error Detection**  
-Initial test returns `AccessDeniedException` due to missing DynamoDB permissions.  
-![Step 11](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_11.png)  
+![Step 11](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_11.png)  
 
 **Step 12: IAM Role Access for Lambda**  
-Navigate to **Configuration → Permissions** and open execution role to add inline policy.  
-![Step 12](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_12.png)  
+![Step 12](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_12.png)  
 
 **Step 13: Inline Policy Creation**  
-Create JSON-based IAM policy to allow DynamoDB `Scan`, `GetItem`, `PutItem`.  
-![Step 13](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_13.png)  
+![Step 13](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_13.png)  
 
 **Step 14: Attach Policy to Role**  
-Attach policy successfully; Lambda function now has required DynamoDB access.  
-![Step 14](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_14.png)  
+![Step 14](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_14.png)  
 
 **Step 15: Lambda Test Success**  
-Re-run test event; returns `[]`, indicating successful connection to DynamoDB.  
-![Step 15](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_15.png)  
+![Step 15](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_15.png)  
 
 ---
 
-### Phase 4: Lambda – POST Function (Data Insertion)
+### Phase 4: Lambda – POST Function
+
 **Step 16: POST Function Creation**  
-- Function Name: `insertStudentData`  
-- Runtime: Python 3.13  
-- Role: Reuse existing Lambda role with DynamoDB access  
-![Step 16](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_16.png)  
+![Step 16](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_16.png)  
 
 **Step 17: Function Code Implementation**  
-`insertStudentData.py` handles insertion of new student records into DynamoDB.  
-![Step 17](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_17.png)  
+![Step 17](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_17.png)  
 
 **Step 18: POST Function Test Event**  
-Create test event `mytest1` with sample student JSON payload.  
-![Step 18](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_18.png)  
+![Step 18](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_18.png)  
 
 **Step 19: Test Success**  
-POST function inserts student records successfully; HTTP 200 OK returned.  
-![Step 19](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_19.png)  
+![Step 19](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_19.png)  
 
 **Step 20: Database Verification**  
-Check DynamoDB table: newly inserted student records present.  
-![Step 20](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_20.png)  
+![Step 20](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_20.png)  
 
 ---
 
 ### Phase 5: API Gateway Configuration
+
 **Step 21: Create REST API**  
-Navigate to API Gateway and start REST API creation for Lambda integration.  
-![Step 21](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_21.png)  
+![Step 21](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_21.png)  
 
 **Step 22: API Configuration**  
-- API Name: `student`  
-- Endpoint Type: Edge-optimized  
-![Step 22](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_22.png)  
+![Step 22](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_22.png)  
 
 **Step 23: GET Method Integration**  
-Connect GET method to `getStudent` Lambda function.  
-![Step 23](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_23.png)  
+![Step 23](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_23.png)  
 
 **Step 24: POST Method Integration**  
-Connect POST method to `insertStudentData` Lambda function.  
-![Step 24](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_24.png)  
+![Step 24](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_24.png)  
 
 **Step 25: Enable CORS**  
-Configure CORS for GET and POST methods to allow frontend access.  
-![Step 25](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_25.png)  
+![Step 25](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_25.png)  
 
 ---
 
 ### Phase 6: Frontend Hosting – S3 Static Website
+
 **Step 26: Create S3 Bucket**  
-Bucket `themasterbucket` created to host frontend React app.  
-![Step 26](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_26.png)  
+![Step 26](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_26.png)  
 
 **Step 27: Upload React Files**  
-Upload `index.html`, CSS, JS, and other frontend assets.  
-![Step 27](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_27.png)  
+![Step 27](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_27.png)  
 
 **Step 28: Enable Static Hosting**  
-Configure S3 bucket as static website; index document: `index.html`.  
-![Step 28](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_28.png)  
+![Step 28](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_28.png)  
 
 **Step 29: Public Access & Bucket Policy**  
-Add bucket policy to allow public `GetObject` access.  
-![Step 29](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_29.png)  
+![Step 29](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_29.png)  
 
 ---
 
-### Phase 7: CloudFront – Secure CDN Distribution
+### Phase 7: CloudFront – Secure CDN
+
 **Step 30: Create CloudFront Distribution**  
-Distribute S3 website via CloudFront to enable HTTPS and global caching.  
-![Step 30](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_30.png)  
+![Step 30](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_30.png)  
 
 **Step 31: Configure SSL**  
-Use default CloudFront SSL certificate (`*.cloudfront.net`) for HTTPS.  
-![Step 31](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_31.png)  
+![Step 31](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_31.png)  
 
 **Step 32: Distribution Success**  
-Website now accessible securely via CloudFront HTTPS endpoint.  
-![Step 32](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_32.png)  
+![Step 32](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_32.png)  
 
 ---
+
 ### Phase 8: End-to-End Testing & Frontend Verification
 
 **Step 33: Empty Student Table Verification**  
-Access the frontend React application hosted on S3. Initially, the student table is empty, displaying only headers for `StudentID`, `Name`, `Class`, and `Age`. This verifies that the frontend is correctly connected to the backend API.  
-![Step 33](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_51.png)  
+Access the frontend React application hosted on S3. Initially, the student table is empty, displaying headers for `StudentID`, `Name`, `Class`, and `Age`. This verifies that the frontend is correctly connected to the backend API.  
+![Step 33](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_33.png)  
 
 **Step 34: Display Existing Student Data**  
-After inserting test data via Lambda POST function, refresh the frontend. The previously inserted student records are displayed in the table, confirming that the GET Lambda function and API Gateway are returning correct data.  
-![Step 34](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_52.png)  
+After inserting test data via Lambda POST function, refresh the frontend. The previously inserted student records are displayed in the table, confirming that the GET Lambda function and API Gateway return correct data.  
+![Step 34](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_34.png)  
 
 **Step 35: Add New Student Record**  
-Use the frontend form to add a new student. Upon submission, the POST Lambda function is invoked via API Gateway, inserting the record into DynamoDB. The frontend table refreshes automatically to show the new entry.  
-![Step 35](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_53.png)  
+Use the frontend form to add a new student. Submission triggers POST Lambda function via API Gateway, inserting the record into DynamoDB. Frontend updates automatically.  
+![Step 35](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_35.png)  
 
 **Step 36: Verify Browser Security Warning**  
-Accessing the website via HTTP directly from S3 shows a “Not Secure” warning. This highlights the need for a secure HTTPS setup with CloudFront distribution.  
-![Step 36](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_54.png)  
+Accessing S3 directly via HTTP shows “Not Secure” warning, highlighting the need for HTTPS setup with CloudFront.  
+![Step 36](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_36.png)  
 
 ---
 
 ### Phase 9: CloudFront Distribution – HTTPS & Global Delivery
 
 **Step 37: CloudFront Console Access**  
-Open AWS CloudFront service console and initiate a new distribution. This ensures secure HTTPS delivery and global caching for the application.  
-![Step 37](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_55.png)  
+Open AWS CloudFront service console and initiate a new distribution to enable HTTPS and caching.  
+![Step 37](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_37.png)  
 
 **Step 38: Distribution Configuration – Name & Description**  
-Configure distribution name as `student-management-app`, add description, and select the S3 bucket as origin.  
-![Step 38](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_56.png)  
+Configure distribution as `student-management-app`, select S3 bucket as origin.  
+![Step 38](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_38.png)  
 
 **Step 39: Security Settings**  
-Set viewer protocol policy to **Redirect HTTP to HTTPS** and disable AWS WAF for initial setup.  
-![Step 39](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_57.png)  
+Set viewer protocol policy to **Redirect HTTP to HTTPS**, optionally configure WAF.  
+![Step 39](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_39.png)  
 
 **Step 40: SSL Certificate Selection**  
 Use default CloudFront SSL certificate (`*.cloudfront.net`) for HTTPS support.  
-![Step 40](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_58.png)  
+![Step 40](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_40.png)  
 
 **Step 41: Review & Finalize Origin**  
-Ensure the origin domain points to the correct S3 bucket with static website hosting enabled.  
-![Step 41](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_59.png)  
+Ensure origin points to the correct S3 bucket with static hosting enabled.  
+![Step 41](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_41.png)  
 
 **Step 42: Create CloudFront Distribution**  
-Deploy the distribution. CloudFront propagates configuration across all edge locations, enabling HTTPS access globally.  
-![Step 42](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_60.png)  
+Deploy distribution. CloudFront propagates configuration globally, enabling secure access.  
+![Step 42](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_42.png)  
 
 **Step 43: Final Secure Website Access**  
-Access the application via the CloudFront HTTPS endpoint. All frontend requests are served securely, and student records can be viewed and added without HTTP warnings.  
-![Step 43](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_61.png)  
+Access the application via CloudFront HTTPS endpoint. All frontend requests served securely; student records viewable and insertable.  
+![Step 43](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_43.png)  
+
+**Step 44: Frontend Form Validation**  
+Ensure frontend form validation works (required fields, data types, etc.) before submission to Lambda POST function.  
+![Step 44](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_44.png)  
+
+**Step 45: API Gateway Monitoring**  
+Check API Gateway metrics and logs to verify all GET and POST calls succeed without errors.  
+![Step 45](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_45.png)  
+
+**Step 46: Lambda CloudWatch Logs – GET Function**  
+Monitor GET Lambda function logs in CloudWatch to ensure correct data retrieval.  
+![Step 46](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_46.png)  
+
+**Step 47: Lambda CloudWatch Logs – POST Function**  
+Monitor POST Lambda function logs in CloudWatch to ensure successful inserts.  
+![Step 47](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_47.png)  
+
+**Step 48: Database Verification After Multiple Inserts**  
+Confirm DynamoDB contains all inserted records with correct schema and no duplication.  
+![Step 48](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_48.png)  
+
+**Step 49: Frontend Refresh After Multiple Inserts**  
+Ensure frontend reflects latest data after multiple record insertions.  
+![Step 49](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_49.png)  
+
+**Step 50: Cross-Browser Testing**  
+Test application in Chrome, Firefox, and Edge to ensure consistent UI and API functionality.  
+![Step 50](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_50.png)  
+
+**Step 51: Empty Student Table Verification (Re-check)**  
+Access frontend; confirm table is empty if DynamoDB is cleared for testing.  
+![Step 51](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_51.png)  
+
+**Step 52: Display Existing Student Data (Re-check)**  
+Refresh frontend after test data insertion; validate GET function returns all records.  
+![Step 52](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_52.png)  
+
+**Step 53: Add Another Student Record**  
+Submit another record from frontend; verify POST function inserts successfully and frontend table updates.  
+![Step 53](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_53.png)  
+
+**Step 54: Verify CloudFront HTTPS Delivery**  
+Ensure all frontend requests route via HTTPS and SSL certificate is valid.  
+![Step 54](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_54.png)  
+
+**Step 55: CloudFront Cache Behavior Test**  
+Update frontend file; confirm CloudFront caches updated content correctly.  
+![Step 55](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_55.png)  
+
+**Step 56: Lambda Function Scaling Test**  
+Simulate concurrent requests to verify Lambda scaling and API Gateway throughput.  
+![Step 56](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_56.png)  
+
+**Step 57: DynamoDB Auto-scaling Check**  
+Confirm DynamoDB read/write capacity scales correctly under load.  
+![Step 57](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_57.png)  
+
+**Step 58: IAM Role Least-Privilege Verification**  
+Ensure Lambda execution roles and policies grant only required permissions.  
+![Step 58](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_58.png)  
+
+**Step 59: End-to-End Data Flow Validation**  
+Test full workflow: submit via frontend → POST Lambda → DynamoDB → GET Lambda → frontend table.  
+![Step 59](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_59.png)  
+
+**Step 60: Final CloudFront Distribution Validation**  
+Confirm global access, HTTPS enforcement, and content caching via CloudFront.  
+![Step 60](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_60.png)  
+
+**Step 61: Secure Website Access Complete**  
+Application now fully deployed, secure, and functional. All screenshots verified for reproducibility.  
+![Step 61](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless_Web-App_61.png)  
 
 ---
 
