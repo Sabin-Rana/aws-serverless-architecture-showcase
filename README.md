@@ -87,6 +87,7 @@ DynamoDB table items view showing empty state before any data insertion, confirm
 Create new test event named **"mytest"** in Lambda console to validate function execution with sample payload  
 ![Step 9](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_9.png)
 
+
 **Step 10: Permission Error Detection**  
 AccessDeniedException error when testing Lambda function, indicating missing DynamoDB permissions in execution role  
 ![Step 10](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless-Web-App_10.png)
