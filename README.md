@@ -99,7 +99,7 @@ Create a test event `mytest` for initial function validation.
 
 #### Step 11: Permission Error Identification
 Execution returns `AccessDeniedException` due to missing DynamoDB permissions for Lambda.  
-![Step 11](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless-architecture-showcase_11.png)
+![Step 11](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Screenshots/Deploying_Serverless-Web-App_11.png)
 
 #### Step 12: IAM Role Access
 Access Lambda function **Configuration → Permissions** and open execution role `getStudent-role-6vsfiqz6` for policy editing.  
@@ -342,16 +342,13 @@ Student management application served securely via CloudFront over HTTPS.
 ---
 
 ## Project Structure
-## Project Structure
-├── README.md
-├── Architecture_Diagram/
-│   └── SERVERLESS_Web-App-Architecture.png
-└── Screenshots/
-    └── Deploying_Serverless_Web-App_1.png ... through Deploying_Serverless_Web-App_61.png
+├── README.md  
+├── Architecture_Diagram/  
+│   └── SERVERLESS_Web-App-Architecture.png  
+└── Screenshots/  
+    └── Deploying_Serverless_Web-App_1.png ... through Deploying_Serverless_Web-App_61.png  
 
-
-
-**Code Reference:** Complete source code available in `AWS-SERVERLESS-DEPLOYMENT` repository.
+**Code Reference:** Complete source code available in [AWS-SERVERLESS-DEPLOYMENT](https://github.com/ansarshaik965/AWS-SERVERLESS-DEPLOYMENT) repository.
 
 ---
 
@@ -446,7 +443,6 @@ Student management application served securely via CloudFront over HTTPS.
 
 ## Conclusion
 This serverless web application illustrates a complete, production-ready AWS deployment with scalability, cost-efficiency, and maintainability. The step-by-step documentation with screenshots ensures reproducibility and serves as a comprehensive learning resource for developers adopting serverless architecture.
-
 
 **AWS Services Used:** Lambda, API Gateway, DynamoDB, S3, CloudFront, IAM  
 **Architecture Pattern:** Serverless Microservices  
