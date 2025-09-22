@@ -341,8 +341,7 @@ I have modified and edited the code to suit this project. Key files include:
 - **API Gateway Integration**: Successful GET/POST method configuration with CORS enablement  
 - **S3 Hosting Verification**: Static website hosting configuration and public access validation  
 - **CloudFront Distribution**: HTTPS enforcement and global content delivery testing  
-- **End-to-End Workflow**: Complete CRUD operation validation through frontend interface  
-
+- **End-to-End Workflow**: Complete Create and Read operation validation through the frontend interface.
 ---
 
 ## **Performance Metrics**
