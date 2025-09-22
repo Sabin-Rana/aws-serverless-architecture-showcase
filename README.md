@@ -6,7 +6,7 @@ This project demonstrates the deployment of a production-ready serverless web ap
 ---
 
 ## Architecture Diagram
-![AWS Serverless Architecture](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Architecture_Diagram/SERVERLESS_Web-App-Architecture.png)
+![AWS Serverless Architecture]([https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Architecture_Diagram/SERVERLESS_Web-App-Architecture.png](https://github.com/Sabin-Rana/aws-serverless-architecture-showcase/blob/main/Architecture_Diagram/SERVERLESS%20_WEB-App-Architecture.png)
 
 ---
 
