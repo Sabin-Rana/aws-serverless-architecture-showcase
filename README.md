@@ -80,7 +80,8 @@ Python code for getStudent function pasted into Lambda code editor, implementing
 ![Step 7](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_7.png)
 
 **Step 8: Database State Verification**  
-DynamoDB table items view showing empty state before any data insertion, confirming clean database setup  
+This step sets up the StudentData table in AWS DynamoDB with StudentID as the partition key, using on-demand capacity and point-in-time recovery for data protection.
+Lambda functions like getStudent interact with the table to fetch and manage student records securely.
 ![Step 8](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_8.png)
 
 **Step 9: Lambda Test Event Creation**  
@@ -130,11 +131,17 @@ Create test event **mytest1** with sample student data (StudentID, Name, Class, 
 Successful test execution returning **"Student data saved successfully!"**, confirming DynamoDB write operation.
 
 **Step 20: Database Population Verification**  
-DynamoDB table view showing successfully inserted student record with all attributes properly stored  
+Test event mytest1 ran successfully, and the response confirms that the student data was saved properly  
 ![Step 20](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_20.png)
 
 **Step 21: Data Integrity Check**  
-Detailed view of inserted student record confirming data integrity and proper attribute mapping in DynamoDB  
+The inserted student record in **DynamoDB** was verified successfully, confirming proper attribute mapping and data integrity:
+
+| StudentID | Age | Class | Name  |
+|-----------|-----|-------|-------|
+| 1         | 30  | A     | Sabin |
+
+**Scan details:** Items returned: 1, Items scanned: 1, Efficiency: 100%, RCUs consumed: 2 
 ![Step 21](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_21.png)
 
 ### Phase 2: API Gateway & S3 Integration
@@ -188,7 +195,8 @@ Retrieve API Gateway invoke URL from Stages section for frontend application int
 ![Step 33](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_33.png)
 
 **Step 34: Architecture Visualization**  
-API Gateway resource method diagram showing integration between GET/POST methods and Lambda functions  
+API Gateway resource method diagram showing integration between **GET/POST methods** and the Lambda function `getStudent`.  
+The diagram includes **API Gateway** as the entry point triggering the Lambda function 
 ![Step 34](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_34.png)
 
 **Step 35: CORS Configuration**  
@@ -307,13 +315,23 @@ Application accessed via CloudFront HTTPS endpoint with secure connection and va
 aws-serverless-architecture-showcase/
 ├── README.md
 ├── Architecture_Diagram/
-│ └── SERVERLESS_Web-App-Architecture.png
+│   └── SERVERLESS_Web-App-Architecture.png
 └── Screenshots/
-└── Deploying_Serverless_Web-App_1.png ... Deploying_Serverless_Web-App_61.png
+    ├── Deploying_Serverless_Web-App_1.png
+    ├── Deploying_Serverless_Web-App_2.png
+    ├── ...
+    └── Deploying_Serverless_Web-App_61.png
 
 
-**Code Reference:** *AWS-SERVERLESS-DEPLOYMENT Repository*  
+**Code Reference:** The original code is available in the [AWS-SERVERLESS-DEPLOYMENT](https://github.com/ansarshaik965/AWS-SERVERLESS-DEPLOYMENT) GitHub repository.  
+I have modified and edited the code to suit this project. Key files include:
 
+- `getStudents.py` – Function to fetch student data  
+- `insertStudentData.py` – Function to insert student records  
+- `index.html` – Frontend interface  
+- `scripts.js` – Client-side JavaScript logic
+ 
+ 
 ---
 
 ## **Testing and Validation**
@@ -403,7 +421,4 @@ aws-serverless-architecture-showcase/
 ## **Deployment Region**
 - **us-east-2 (Ohio)**  
 
----
 
-## **Project Repository**
-- **aws-serverless-architecture-showcase**
