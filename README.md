@@ -315,15 +315,14 @@ Application accessed via CloudFront HTTPS endpoint with secure connection and va
 aws-serverless-architecture-showcase/
 ├── README.md
 ├── Architecture_Diagram/
-│   └── SERVERLESS_Web-App-Architecture.png
+│ └── SERVERLESS_Web-App-Architecture.png
 └── Screenshots/
-    ├── Deploying_Serverless_Web-App_1.png
-    ├── Deploying_Serverless_Web-App_2.png
-    ├── ...
-    └── Deploying_Serverless_Web-App_61.png
+├── Deploying_Serverless_Web-App_1.png
+├── Deploying_Serverless_Web-App_2.png
+├── ...
+└── Deploying_Serverless_Web-App_61.png
 
-
-**Code Reference:** The original code is available in the [AWS-SERVERLESS-DEPLOYMENT](https://github.com/ansarshaik965/AWS-SERVERLESS-DEPLOYMENT) GitHub repository.  
+**Code Reference:** The code is available in the [AWS-SERVERLESS-DEPLOYMENT](https://github.com/ansarshaik965/AWS-SERVERLESS-DEPLOYMENT) GitHub repository.  
 I have modified and edited the code to suit this project. Key files include:
 
 - `getStudents.py` – Function to fetch student data  
