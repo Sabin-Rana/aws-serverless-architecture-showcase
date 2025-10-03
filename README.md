@@ -27,7 +27,7 @@ This project demonstrates the deployment of a production-ready serverless web ap
 ## Features
 
 - **Fully Serverless Architecture**: Zero server management with auto-scaling capabilities
-- **CRUD Operations**: Complete Create and Read functionality for student data management
+- **CRUD Operations**:Create and Read functionality for student data management
 - **Global Content Delivery**: CloudFront-enabled global distribution with low latency
 - **Security Compliance**: HTTPS encryption and IAM-based permission management
 - **Cost Optimization**: Pay-per-request pricing model with no idle resource costs
