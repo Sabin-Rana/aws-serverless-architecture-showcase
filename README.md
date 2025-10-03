@@ -4,8 +4,6 @@
 
 This project demonstrates the deployment of a production-ready serverless web application on AWS for managing student data. Leveraging **AWS Lambda**, **API Gateway**, **DynamoDB**, **S3**, and **CloudFront**, the application provides a **scalable, cost-efficient, and highly available solution** without the need to manage servers. It implements a **fully serverless microservices architecture**, showcasing **best practices for security, performance, and operational efficiency**.
 
-The documentation includes **detailed step-by-step deployment instructions, architecture diagram, screenshots, and professional documentation** to enable **reproducibility, learning, and potential extension** of this system in production environments.
-
 ---
 
 ## Architecture Diagram
