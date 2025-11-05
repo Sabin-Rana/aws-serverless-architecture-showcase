@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This project demonstrates the deployment of a production-ready serverless web application on AWS for managing student data. Leveraging **AWS Lambda**, **API Gateway**, **DynamoDB**, **S3**, and **CloudFront**, the application provides a **scalable, cost-efficient, and highly available solution** without the need to manage servers. It implements a **fully serverless microservices architecture**, showcasing **best practices for security, performance, and operational efficiency**.
+This project demonstrates the **complete deployment and validation** of a serverless web application on AWS for managing student data.
 
 ---
 
@@ -26,12 +26,12 @@ This project demonstrates the deployment of a production-ready serverless web ap
 
 ## Features
 
-- **Fully Serverless Architecture**: Zero server management with auto-scaling capabilities
-- **CRUD Operations**:Create and Read functionality for student data management
-- **Global Content Delivery**: CloudFront-enabled global distribution with low latency
-- **Security Compliance**: HTTPS encryption and IAM-based permission management
-- **Cost Optimization**: Pay-per-request pricing model with no idle resource costs
-- **Comprehensive Documentation**: 61-step deployment guide with visual documentation
+- **Fully Deployed Serverless Architecture**: Complete AWS deployment with auto-scaling capabilities
+- **CRUD Operations**: Create and Read functionality validated end-to-end
+- **Global Content Delivery**: CloudFront distribution configured and tested
+- **Security Implementation**: HTTPS encryption and IAM permissions validated
+- **Cost-Conscious Deployment**: Immediate teardown after comprehensive testing
+- **Complete Documentation**: 61-step deployment guide with validation evidence
 
 ---
 
@@ -181,7 +181,7 @@ POST method successfully created and configured with Lambda integration for data
 ![Step 30](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_30.png)
 
 **Step 31: Deployment Stage Creation**  
-Create new deployment stage named **"prod"** to make API accessible via public endpoint for production use  
+Create new deployment stage named **"prod"** to make API accessible via public endpoint for **testing and validation** 
 ![Step 31](https://raw.githubusercontent.com/Sabin-Rana/aws-serverless-architecture-showcase/main/Screenshots/Deploying_Serverless_Web-App_31.png)
 
 **Step 32: Stage Deployment Success**  
